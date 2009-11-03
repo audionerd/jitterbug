@@ -19,9 +19,9 @@ module Jitterbug
         -font #{Jitterbug::Fonts.find(options[:font_dir], options[:font])} \
         -pointsize #{options[:size]} -blur 0x.3 #{caption} #{path}`
     end
-    image_tag "/#{options[:img_path]}/#{hash}.#{options[:format]}".gsub('//', '/'),
-              :class => (['jitterbug'] << options[:class]).compact.join(' '),
-              :alt => label
+    img_src   = "/#{options[:img_path]}/#{hash}.#{options[:format]}".gsub('//', '/')
+    img_class = (['jitterbug'] << options[:class]).compact.join(' ')
+    %Q{<img src="#{img_src}" class="#{img_class}" alt="#{label}" />}
   end
 
 end

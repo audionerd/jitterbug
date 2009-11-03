@@ -7,8 +7,8 @@ Jitterbug provides on-demand text header images using the font of your choice. O
 Pass the `jitterbug` helper a string to convert into a header graphic. Optionally pass in any other parameters that differ from the defaults.
 
     <%= jitterbug 'Default' %>
-    <%= jitterbug('News', :size => 24) %>
-    <%= jitterbug(t('whole_enchilada'), :background => '#fff', :color => 'green', :font => 'Yummy.otf', :font_dir => '/fonts/', :format => 'gif', :img_path => '/images/headers/', :size => 64) %>
+    <%= jitterbug('Forty Two', :size => 42) %>
+    <%= jitterbug(t('whole_enchilada'), :background => '#fff', :color => 'green', :font => 'Yummy.otf', :font_dir => '/fonts/', :format => 'gif', :img_path => '/images/headers/', :size => 64, :width => 240) %>
 
 ## Dependencies
 
