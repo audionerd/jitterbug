@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{jitterbug}
-  s.version = "0.2.0"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Chris Sessions", "Seth Engelhard"]
@@ -27,7 +27,6 @@ Gem::Specification.new do |s|
      "lib/jitterbug.rb",
      "lib/jitterbug/config.rb",
      "lib/jitterbug/fonts.rb",
-     "rails/init.rb",
      "spec/jitterbug_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb"
