@@ -23,7 +23,7 @@ Jitterbug uses `Imagemagick` to build the header images. It needs to be installe
 
     sudo gem install jitterbug
 
-In your "config/environment.rb" file:
+In your `config/environment.rb` file:
 
     Rails::Initializer.run do |config|
       config.gem "jitterbug", :source  => 'http://gemcutter.org/'
@@ -31,7 +31,7 @@ In your "config/environment.rb" file:
 
 ## Configuration
 
-Define your global configuration in "config/jitterbug.yml". The following sample contains Jitterbug's built in defaults. Note that the asterisk default for the font causes Jitterbug to use the first font that it finds in the font_dir folder.
+Define your global configuration in `config/jitterbug.yml`. The following sample contains Jitterbug's built in defaults. Note that the asterisk default for the font causes Jitterbug to use the first font that it finds in the font_dir folder.
 
     development:   &defaults
       background:  transparent
