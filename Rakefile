@@ -5,13 +5,12 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "jitterbug"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
-    gem.email = "sessions@flying-saucer.net"
+    gem.summary = %Q{Jitterbug: A just-in-time image creator for pretty text headers}
+    gem.description = %Q{Jitterbug provides on-demand text header images using the font of your choice. On its first request, Jitterbug creates the requested header graphic. Then, and on subsequent requests, it returns an html image tag pointing to the header graphic file.}
+    gem.email = "contact@flying-saucer.net"
     gem.homepage = "http://github.com/flyingsaucer/jitterbug"
-    gem.authors = ["Chris Sessions"]
+    gem.authors = ["Chris Sessions", "Seth Engelhard"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
