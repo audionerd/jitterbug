@@ -83,11 +83,15 @@ generates the following HTML with all the necessary styles defined inline:
 
     <h2 class="jitterbug" style="display:block;text-indent:-9999px;margin:0;padding:0;background:url(/content/jitterbug/a034939a8aaccd59354207b4fdff120b.png)no-repeat;height:64px;">Hello World</h2>
 
-The alternative option is `:tag => :h1`, which generates a leaner tag:
+The alternative option is `:tag => :h1`:
+
+    <%= jitterbug 'Hello World', :tag => :h1, :width => 240 %>
+
+Which generates a leaner tag:
 
     <h1 class="jitterbug" style="background-image:url(/content/jitterbug/37cf820f2f6b018f6f4d486517ac8d20.png);">Hello World</h1>
     
-Which relies on an external stylesheet like the following:
+And relies on an external stylesheet like the following:
 
     h1.jitterbug {
       background-repeat: no-repeat;
