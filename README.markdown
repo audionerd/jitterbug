@@ -22,30 +22,6 @@ Pass the `jitterbug` helper a string to convert into a header graphic. Optionall
 
     jitterbug 'Hello World', :fat => :h1, :format => :gif
     => <h1 class="jitterbug" style="display: block; text-indent: -9999px; margin: 0; padding: 0; background: url(/content/jitterbug/dda0f37e2a1dd6e4a3b94d6817194378.gif) no-repeat;">Hello World</h1>
-    
-## Available Options
-
-`:background` Background color for the generated header image (default `transparent`)
-
-`:class` Any additional classes to include in the generated tag (default `jitterbug`)
-
-`:color` Font color for the generated header image (default `black`)
-
-`:fat` Return the specified tag (eg. `:fat =:h1`) with inline styles to hide a text label and show the graphic instead
-
-`:font_dir` Directory where fonts reside (default `/lib/fonts/`)
-
-`:font` Font to use in the generated header image (default `*`, ie. first font found in the font directory)
-
-`:format` Format to output the generated header image (default `png`)
-
-`:img_path` Image path for generated header images (default `/content/jitterbug/`)
-
-`:size` Font size for the generated header image (default `16`)
-
-`:tag` Return the specified tag (eg. `:tag =:h1`) header graphic indicated in tag classes (see below)
-
-`:width` Maximum width for the generated header image (text will wrap to a new line to stay within the specified width)
 
 ## Installation
 
@@ -70,8 +46,53 @@ In your `app\controllers\application_controller.rb` file:
     end
 
 Drop any fonts into your project's font directory (by default `/lib/fonts`).
+    
+## Available Options
+
+`:background` Background color for the generated header image (default `transparent`)
+
+`:class` Any additional classes to include in the generated tag (default `jitterbug`)
+
+`:color` Font color for the generated header image (default `black`)
+
+`:fat` Return the specified tag (eg. `:fat => :h1`) with full inline styles to hide a text label and show the graphic instead (see the next section)
+
+`:font_dir` Directory where fonts reside (default `/lib/fonts/`)
+
+`:font` Font to use in the generated header image (default `*`, ie. first font found in the font directory)
+
+`:format` Format to output the generated header image (default `png`)
+
+`:img_path` Image path for generated header images (default `/content/jitterbug/`)
+
+`:size` Font size for the generated header image (default `16`)
+
+`:tag` Return the specified tag (eg. `:tag => :h1`) with only the `background-image` declared inline (see the next section)
+
+`:width` Maximum width for the generated header image (text will wrap to a new line to stay within the specified width)
 
 ## Using the `:fat` and `:tag` Options
+
+Jitterbug provides two easy ways to display a header graphic within HTML header tags. The first is by passing `:fat => :h1` (or other tag) in with the options. For example:
+
+    <%= jitterbug 'Hello World', :size => 64, :fat => :h1 %>
+
+generates the following HTML:
+
+    <h1 class="jitterbug" style="display: block; text-indent: -9999px; margin: 0; padding: 0; background: url(/content/jitterbug/fa2d3123c41a0fe003159f11daf9dbaa.png) no-repeat; height: 64px">Hello World</h1>
+    
+If you don't like the inline styles, pass in `:tag => :h1` instead, then use external CSS and Javascript to finish the job:
+
+    <%= jitterbug 'Hello World', :size => 64, :tag => :h1 %>
+
+generates the following HTML:
+
+    <h1 class="jitterbug" title="/content/jitterbug/37cf820f2f6b018f6f4d486517ac8d20.png">Hello World</h1>
+
+Which needs this CSS:
+
+
+And this jQuery:
 
 
 

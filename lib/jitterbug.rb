@@ -1,5 +1,6 @@
 require 'jitterbug/config'
-require 'jitterbug/support'
+require 'jitterbug/css'
+require 'jitterbug/fonts'
 require 'md5'
 
 module Jitterbug
@@ -16,17 +17,15 @@ module Jitterbug
       caption = options[:width] ? "-size #{options[:width]}x caption:'#{label}'" : "label:'#{label}'"
       `mkdir -p #{"#{RAILS_ROOT}/public/#{options[:img_path]}".gsub('//', '/')}`
       `convert -background #{options[:background]} -fill "#{options[:color]}" \
-        -font #{Jitterbug::Support.fonts(options[:font_dir], options[:font])} \
+        -font #{Jitterbug::Fonts.find(options[:font_dir], options[:font])} \
         -pointsize #{options[:size]} -blur 0x.3 #{caption} #{path}`
     end
     img_src   = "/#{options[:img_path]}/#{hash}.#{options[:format]}".gsub('//', '/')
     img_class = (['jitterbug'] << options[:class]).compact.join(' ')
     if options[:tag]
-      content_tag(options[:tag], label, :class => "#{img_class} #{hash}_#{options[:format]}")
+      content_tag(options[:tag], label, :class => img_class, :style => Jitterbug::Css.tag(img_src, options))
     elsif options[:fat]
-      css = "display: block; text-indent: -9999px; margin: 0; padding: 0; background: url(#{img_src}) no-repeat;"
-      css += " height: #{options[:size]}px" if options[:width].nil?
-      content_tag(options[:fat], label, :class => img_class, :style => css)
+      content_tag(options[:fat], label, :class => img_class, :style => Jitterbug::Css.fat(img_src, options))
     else
       image_tag(img_src, :alt => label, :class => img_class)
     end

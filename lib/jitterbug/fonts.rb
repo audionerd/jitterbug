@@ -1,7 +1,7 @@
 module Jitterbug
-  module Support
+  module Fonts
     
-    def self.fonts(_path, _font)
+    def self.find(_path, _font)
       path = "#{RAILS_ROOT}/#{_path}/*#{_font}*".gsub('//', '/')
       font = Dir.glob(path)
       case font.size
