@@ -25,6 +25,7 @@ module Jitterbug
       content_tag(options[:tag], label, :class => "#{img_class} #{hash}_#{options[:format]}")
     elsif options[:fat]
       css = "display: block; text-indent: -9999px; margin: 0; padding: 0; background: url(#{img_src}) no-repeat;"
+      css += " height: #{options[:size]}px" if options[:width].nil?
       content_tag(options[:fat], label, :class => img_class, :style => css)
     else
       image_tag(img_src, :alt => label, :class => img_class)

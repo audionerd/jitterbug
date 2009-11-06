@@ -47,6 +47,34 @@ Pass the `jitterbug` helper a string to convert into a header graphic. Optionall
 
 `:width` Maximum width for the generated header image (text will wrap to a new line to stay within the specified width)
 
+## Installation
+
+Install the gem:
+
+    sudo gem install jitterbug
+
+In your `config/environment.rb` file:
+
+    Rails::Initializer.run do |config|
+      ...
+      config.gem "jitterbug", :source  => 'http://gemcutter.org/'
+      ...
+    end
+
+In your `app\controllers\application_controller.rb` file:
+
+    class ApplicationController < ActionController::Base
+      ...
+      helper Jitterbug
+      ...
+    end
+
+Drop any fonts into your project's font directory (by default `/lib/fonts`).
+
+## Using the `:fat` and `:tag` Options
+
+
+
 ## Dependencies
 
 Jitterbug uses `Imagemagick` to build the header images. It needs to be installed on your development and production machines, as do any fonts that you're using. The default location for fonts is `/lib/fonts` in your project.
@@ -58,23 +86,13 @@ Jitterbug currently has several Rails dependencies (`RAILS_ROOT`, `content_tag`,
  * [github.com/flyingsaucer/jitterbug](http://github.com/flyingsaucer/jitterbug)
  * [imagemagick.org](http://www.imagemagick.org/script/index.php)
 
-## Installation
-
-    sudo gem install jitterbug
-
-In your `config/environment.rb` file:
-
-    Rails::Initializer.run do |config|
-      config.gem "jitterbug", :source  => 'http://gemcutter.org/'
-    end
-
 ## Global Configuration
 
 Define your global configuration in `config/jitterbug.yml`. The following sample contains Jitterbug's built in defaults. Note that the asterisk default for the font causes Jitterbug to use the first font that it finds in the font_dir folder.
 
     development:   &defaults
       background:  transparent
-      color:       white
+      color:       black
       font:        *
       font_dir:    /lib/fonts/
       format:      png
