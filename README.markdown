@@ -73,28 +73,28 @@ Drop any fonts into your project's font directory (by default `/lib/fonts`).
 
 ## Using the `:fat` and `:tag` Options
 
-Jitterbug provides two easy ways to display a header graphic within HTML header tags. The first is by passing `:fat => :h1` (or other tag) in with the options. For example:
+Jitterbug provides two easy ways to display a header graphic within HTML header tags. The first and simplest is by passing `:fat => :h1` in with the options (replacing `:h1` with whatever tag you need). For example:
 
-    <%= jitterbug 'Hello World', :size => 64, :fat => :h1 %>
+    <%= jitterbug 'Hello World', :size => 64, :fat => :h2 %>
 
-generates the following HTML:
+generates the following HTML with all the necessary styles defined inline:
 
-    <h1 class="jitterbug" style="display: block; text-indent: -9999px; margin: 0; padding: 0; background: url(/content/jitterbug/fa2d3123c41a0fe003159f11daf9dbaa.png) no-repeat; height: 64px">Hello World</h1>
+    <h2 class="jitterbug" style="display:block;text-indent:-9999px;margin:0;padding:0;background:url(/content/jitterbug/a034939a8aaccd59354207b4fdff120b.png)no-repeat;height:64px;">Hello World</h2>
+
+The alternative option is `:tag => :h1`, which generates a leaner tag:
+
+    <h1 class="jitterbug" style="background-image:url(/content/jitterbug/37cf820f2f6b018f6f4d486517ac8d20.png);">Hello World</h1>
     
-If you don't like the inline styles, pass in `:tag => :h1` instead, then use external CSS and Javascript to finish the job:
+Which relies on an external stylesheet like the following:
 
-    <%= jitterbug 'Hello World', :size => 64, :tag => :h1 %>
-
-generates the following HTML:
-
-    <h1 class="jitterbug" title="/content/jitterbug/37cf820f2f6b018f6f4d486517ac8d20.png">Hello World</h1>
-
-Which needs this CSS:
-
-
-And this jQuery:
-
-
+    h1.jitterbug {
+      background-repeat: no-repeat;
+      display: block;
+      height: 64px;
+      margin: 0;
+      padding: 0;
+      text-indent: -9999px;
+    }
 
 ## Dependencies
 

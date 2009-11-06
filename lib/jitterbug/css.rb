@@ -1,19 +1,15 @@
 module Jitterbug
   module Css
 
-    def self.fat(src, options)
+    def self.fat(src, opts)
       css = "display:block;text-indent:-9999px;margin:0;padding:0;background:url(#{src})no-repeat;"
-      styles(css, options)
+      css += "height:#{opts[:size]}px;" if opts[:width].nil?
+      "#{css}#{opts[:css].to_s}"
     end
 
-    def self.tag(src, options)
-      css = "background-image:url(#{src});"
-      styles(css, options)
+    def self.tag(src, opts)
+      "background-image:url(#{src});#{opts[:css].to_s}"
     end
 
-    def self.styles(css, options)
-      css += "height:#{options[:size]}px;" if options[:width].nil?
-      "#{css}#{options[:css].to_s}"
-    end
   end
 end
