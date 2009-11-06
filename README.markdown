@@ -23,19 +23,22 @@ Pass the `jitterbug` helper a string to convert into a header graphic. Optionall
     jitterbug 'Hello World', :fat => :h1, :format => :gif
     => <h1 class="jitterbug" style="display: block; text-indent: -9999px; margin: 0; padding: 0; background: url(/content/jitterbug/dda0f37e2a1dd6e4a3b94d6817194378.gif) no-repeat;">Hello World</h1>
     
-Available options are:
+**Available options are:**
 
-|`:background`|Background color for the generated header image (default `transparent`)|
-|`:class`|Any additional classes to include in the generated tag (default `jitterbug`)|
-|`:color`|Font color for the generated header image (default `black`)|
-|`:fat`|Return the specified tag (eg. `:fat => :h1`) with inline styles to hide a text label and show the graphic instead|
-|`:font_dir`|Directory where fonts reside (default `/lib/fonts/`)|
-|`:font`|Font to use in the generated header image (default `*`, ie. first font found in the font directory)|
-|`:format`|Format to output the generated header image (default `png`)|
-|`:img_path`|Image path for generated header images (default `/content/jitterbug/`)|
-|`:size`|Font size for the generated header image (default `16`)|
-|`:tag`|Return the specified tag (eg. `:tag => :h1`) header graphic indicated in tag classes (see below)|
-|`:width`|Maximum width for the generated header image (text will wrap to a new line to stay within the specified width)|
+> `:background` Background color for the generated header image (default `transparent`)
+> `:class` Any additional classes to include in the generated tag (default `jitterbug`)
+> `:color` Font color for the generated header image (default `black`)
+> `:fat` Return the specified tag (eg. `:fat => :h1`) with inline styles to hide a text label and show the graphic instead
+> `:font_dir` Directory where fonts reside (default `/lib/fonts/`)
+> `:font` Font to use in the generated header image (default `*`, ie. first font found in the font directory)
+> `:format` Format to output the generated header image (default `png`)
+> `:img_path` Image path for generated header images (default `/content/jitterbug/`)
+> `:size` Font size for the generated header image (default `16`)
+> `:tag` Return the specified tag (eg. `:tag => :h1`) header graphic indicated in tag classes (see below)
+> `:width` Maximum width for the generated header image (text will wrap to a new line to stay within the specified width)
+
+**Sample :tag use**
+
 
 ## Dependencies
 
@@ -69,7 +72,7 @@ Define your global configuration in `config/jitterbug.yml`. The following sample
       font_dir:    /lib/fonts/
       format:      png
       img_path:    /content/jitterbug/
-      size:        14
+      size:        16
 
     test:
       <<:          *defaults
