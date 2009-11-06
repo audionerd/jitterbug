@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
      "jitterbug.gemspec",
      "lib/jitterbug.rb",
      "lib/jitterbug/config.rb",
+     "lib/jitterbug/support.rb",
      "spec/jitterbug_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb"

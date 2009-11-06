@@ -13,9 +13,9 @@ module Jitterbug
     
     def self.styles(path, minimal)
       if minimal
-        "background-image: url(#{img_src});"
+        "background-image: url(#{path});"
       else
-        "display: block; text-indent: -9999px; margin: 0; padding: 0; background: url(#{img_src}) no-repeat;"
+        "display: block; text-indent: -9999px; margin: 0; padding: 0; background: url(#{path}) no-repeat;"
       end
     end
     
