@@ -12,7 +12,7 @@ Pass the `jitterbug` helper a string to convert into a header graphic. Optionall
 
 ## Dependencies
 
-Jitterbug uses `Imagemagick` to build the header images. It needs to be installed on your development and production machines, as do any fonts that you're using. The default folder for fonts is `/lib/fonts` in your project.
+Jitterbug uses `Imagemagick` to build the header images. It needs to be installed on your development and production machines, as do any fonts that you're using. The default location for fonts is `/lib/fonts` in your project.
 
 ## Quick Links
 
