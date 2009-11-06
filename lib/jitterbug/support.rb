@@ -10,14 +10,6 @@ module Jitterbug
         else    raise "*** Jitterbug Error: Multiple fonts matched '#{_font}' in #{_path}:\n    + #{font.join("\n    + ")}"
       end
     end
-    
-    def self.styles(path, minimal)
-      if minimal
-        "background-image: url(#{path});"
-      else
-        "display: block; text-indent: -9999px; margin: 0; padding: 0; background: url(#{path}) no-repeat;"
-      end
-    end
-    
+
   end
 end

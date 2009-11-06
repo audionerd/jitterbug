@@ -7,7 +7,7 @@ module Jitterbug
                    :font_dir   => '/lib/fonts/',
                    :format     => 'png',
                    :img_path   => '/content/jitterbug/',
-                   :size       => 13 }
+                   :size       => 16 }
 
     def self.read
       config = "#{RAILS_ROOT}/config/jitterbug.yml"

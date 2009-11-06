@@ -21,10 +21,13 @@ module Jitterbug
     end
     img_src   = "/#{options[:img_path]}/#{hash}.#{options[:format]}".gsub('//', '/')
     img_class = (['jitterbug'] << options[:class]).compact.join(' ')
-    if options[:tag].nil? || options[:tag].to_s.downcase == 'img'
-      image_tag(img_src, :alt => label, :class => img_class)
+    if options[:tag]
+      content_tag(options[:tag], label, :class => "#{img_class} #{hash}_#{options[:format]}")
+    elsif options[:fat]
+      css = "display: block; text-indent: -9999px; margin: 0; padding: 0; background: url(#{img_src}) no-repeat;"
+      content_tag(options[:fat], label, :class => img_class, :style => css)
     else
-      content_tag(options[:tag], label, :class => img_class, :style => Jitterbug::Support.styles(img_src, options[:min]))
+      image_tag(img_src, :alt => label, :class => img_class)
     end
   end
 
