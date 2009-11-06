@@ -18,10 +18,10 @@ Pass the `jitterbug` helper a string to convert into a header graphic. Optionall
     => <img alt="Hello World" class="jitterbug" src="/content/jitterbug/b07af9665275babd5632c5a5fa998a13.png?1257526682" />
 
     jitterbug 'Hello World', :tag => :h1, :width => 240
-    => <h1 class="jitterbug f6ee9597d6861c9edf5c5bbc5c211d18_png">Hello World</h1>
+    => <h1 class="jitterbug" style="background-image:url(/content/jitterbug/7516ee65a817658e4fc5a87b13b0e5c8.png);">Hello World</h1>
 
-    jitterbug 'Hello World', :fat => :h1, :format => :gif
-    => <h1 class="jitterbug" style="display: block; text-indent: -9999px; margin: 0; padding: 0; background: url(/content/jitterbug/dda0f37e2a1dd6e4a3b94d6817194378.gif) no-repeat;">Hello World</h1>
+    jitterbug 'Hello World', :fat => :h2, :format => :gif
+    => <h2 class="jitterbug" style="display:block;text-indent:-9999px;margin:0;padding:0;background:url(/content/jitterbug/99d3a5d5e513074f2e8835bd34f82b9f.gif)no-repeat;height:16px;">Hello World</h2>
 
 ## Installation
 
@@ -66,6 +66,8 @@ Drop any fonts into your project's font directory (by default `/lib/fonts`).
 `:img_path` Image path for generated header images (default `/content/jitterbug/`)
 
 `:size` Font size for the generated header image (default `16`)
+
+`:style` Any additional inline styles to include in the generated tag
 
 `:tag` Return the specified tag (eg. `:tag => :h1`) with only the `background-image` declared inline (see the next section)
 
