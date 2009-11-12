@@ -8,22 +8,31 @@ Jitterbug provides on-demand graphical text headers using the font of your choic
     
 Pass the `jitterbug` helper a string to convert into a header graphic. Optionally pass in any other parameters that differ from the defaults.
 
-![Hello World](http://a51.flying-saucer.net/jitterbug/72a65768cdccea18870b0cb2bdff4703.png)
-
     jitterbug 'Hello World'
     => <img alt="Hello World" class="jitterbug" src="/content/jitterbug/72a65768cdccea18870b0cb2bdff4703.png?1258050948" />
+
+![Hello World](http://a51.flying-saucer.net/jitterbug/72a65768cdccea18870b0cb2bdff4703.png)
 
     jitterbug t('hello_world')
     => <img alt="¡Hola, mundo!" class="jitterbug" src="/content/jitterbug/3a395edcea566b56ed20f6c7b96aeec9.png?1258050948" />
 
+![¡Hola, mundo!](http://a51.flying-saucer.net/jitterbug/3a395edcea566b56ed20f6c7b96aeec9.png)
+
     jitterbug 'Hello Big World', :size => 72
     => <img alt="Hello Big World" class="jitterbug" src="/content/jitterbug/2dd5f6f98139fcdf3e671eca84671baf.png?1258050948" />
+
+![Hello Big World](http://a51.flying-saucer.net/jitterbug/2dd5f6f98139fcdf3e671eca84671baf.png)
 
     jitterbug 'Well hello, World, how do you do?', :tag => :h1, :width => 240, :style => 'height: 110px;'
     => <h1 class="jitterbug" style="background-image:url(/content/jitterbug/e0eb0490fcf15de125eaca6cbdffee12.png);height: 110px;">Well hello, World, how do you do?</h1>
 
-    jitterbug 'Hello World', :fat => :h2, :format => :gif, :color => '#FFCC00', :background => 'black'
-    => <h2 class="jitterbug" style="display:block;text-indent:-9999px;margin:0;padding:0;background:url(/content/jitterbug/c1fc90a971ece44619df482111a6a16f.gif)no-repeat;height:36px;">Hello World</h2>
+
+![Well hello, World, how do you do?](http://a51.flying-saucer.net/jitterbug/e0eb0490fcf15de125eaca6cbdffee12.png)
+
+    jitterbug 'Hello_World.gif', :fat => :h2, :format => :gif, :color => '#FFCC00', :background => 'black'
+    => <h2 class="jitterbug" style="display:block;text-indent:-9999px;margin:0;padding:0;background:url(/content/jitterbug/11686362655ca2fb3235b23a6d6c2621.gif)no-repeat;height:36px;">Hello_World.gif</h2>
+
+![Hello_World.gif](http://a51.flying-saucer.net/jitterbug/11686362655ca2fb3235b23a6d6c2621.gif)
 
 ## Installation
 
