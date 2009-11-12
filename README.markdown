@@ -8,20 +8,22 @@ Jitterbug provides on-demand graphical text headers using the font of your choic
     
 Pass the `jitterbug` helper a string to convert into a header graphic. Optionally pass in any other parameters that differ from the defaults.
 
+![Hello World](http://a51.flying-saucer.net/jitterbug/72a65768cdccea18870b0cb2bdff4703.png)
+
     jitterbug 'Hello World'
-    => <img alt="Hello World" class="jitterbug" src="/content/jitterbug/69e3dda2fea30a43a11b960e7e9d9980.png?1257526589" />
+    => <img alt="Hello World" class="jitterbug" src="/content/jitterbug/72a65768cdccea18870b0cb2bdff4703.png?1258050948" />
 
     jitterbug t('hello_world')
-    => <img alt="Hello World" class="jitterbug" src="/content/jitterbug/69e3dda2fea30a43a11b960e7e9d9980.png?1257526589" />
+    => <img alt="¡Hola, mundo!" class="jitterbug" src="/content/jitterbug/3a395edcea566b56ed20f6c7b96aeec9.png?1258050948" />
 
-    jitterbug 'Hello World', :size => 42
-    => <img alt="Hello World" class="jitterbug" src="/content/jitterbug/b07af9665275babd5632c5a5fa998a13.png?1257526682" />
+    jitterbug 'Hello Big World', :size => 72
+    => <img alt="Hello Big World" class="jitterbug" src="/content/jitterbug/2dd5f6f98139fcdf3e671eca84671baf.png?1258050948" />
 
-    jitterbug 'Hello World', :tag => :h1, :width => 240
-    => <h1 class="jitterbug" style="background-image:url(/content/jitterbug/7516ee65a817658e4fc5a87b13b0e5c8.png);">Hello World</h1>
+    jitterbug 'Well hello, World, how do you do?', :tag => :h1, :width => 240, :style => 'height: 110px;'
+    => <h1 class="jitterbug" style="background-image:url(/content/jitterbug/e0eb0490fcf15de125eaca6cbdffee12.png);height: 110px;">Well hello, World, how do you do?</h1>
 
-    jitterbug 'Hello World', :fat => :h2, :format => :gif
-    => <h2 class="jitterbug" style="display:block;text-indent:-9999px;margin:0;padding:0;background:url(/content/jitterbug/99d3a5d5e513074f2e8835bd34f82b9f.gif)no-repeat;height:16px;">Hello World</h2>
+    jitterbug 'Hello World', :fat => :h2, :format => :gif, :color => '#FFCC00', :background => 'black'
+    => <h2 class="jitterbug" style="display:block;text-indent:-9999px;margin:0;padding:0;background:url(/content/jitterbug/c1fc90a971ece44619df482111a6a16f.gif)no-repeat;height:36px;">Hello World</h2>
 
 ## Installation
 
@@ -106,7 +108,13 @@ And relies on an external stylesheet like the following:
 
 Jitterbug uses `Imagemagick` to build the header images. It needs to be installed on your development and production machines, as do any fonts that you're using. The default location for fonts is `/lib/fonts` in your project.
 
-Jitterbug currently has several Rails dependencies (`RAILS_ROOT`, `content_tag`, `image_tag`), which aren't completely necessary, but we haven't had a need to remove them yet.
+Jitterbug's currently Rails-centric, with these Rails dependencies: `RAILS_ROOT`, `content_tag`, `image_tag`. These aren't completely necessary, but we haven't had a need to remove them yet.
+
+## Compatibility and Font Types
+
+Jitterbug has been tested on OSX and Linux.
+
+The following font formats have successfully passed through the Jitterbug: OpenType (PostScript flavored), OpenType (TrueType flavored), PostScript (Type1), TrueType (Mac), and TrueType (PC). When processing Postscript fonts, Jitterbug (or rather Imagemagick) only uses the font outline file. Please rename any fonts with spaces in their filename.
 
 ## Quick Links
 
