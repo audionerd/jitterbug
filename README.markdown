@@ -139,7 +139,7 @@ You can optionally define a global configuration in `config/jitterbug.yml`. The 
 
 Jitterbug uses [Imagemagick](http://www.imagemagick.org/script/index.php) to build the header images. It needs to be installed on your development and production machines, as do any fonts that you're using. The default location for fonts is `/lib/fonts` in your project.
 
-We've only used Jitterbug in Rails projects thus far, so currently there are a few Rails dependencies: `RAILS_ROOT`, `content_tag` and `image_tag`. If anyone adapts Jitterbug for use in Sanatra, Merb or elsewhere, please send us your patches.
+We've only used Jitterbug in Rails projects thus far, so currently there are a few Rails dependencies: `RAILS_ROOT`, `content_tag` and `image_tag`. If anyone adapts Jitterbug for use in [Sinatra](http://github.com/sinatra/sinatra/), [Merb](http://github.com/merb/merb) or elsewhere, please send us your patches.
 
 ## Compatibility and Font Types
 
