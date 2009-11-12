@@ -1,6 +1,8 @@
 # Jitterbug: A just-in-time image creator for pretty text headers
 
-Jitterbug provides on-demand graphical text headers using the font of your choice. On the first request, Jitterbug creates the requested header graphic and returns its image tag. On subsequent requests it returns the image tag of the already-created graphic.
+[Jitterbug](http://github.com/flyingsaucer/jitterbug) is a gem that provides on-demand graphical text headers using the font of your choice. Use wherever large collections of rich text headers are necessary — especially useful in i18n projects.
+
+On the initial request, Jitterbug creates the specified header graphic and returns its image or header tag. On subsequent requests it references the already-created graphic and returns the requested valid xhtml tag.
 
 ## Usage
 
@@ -113,26 +115,9 @@ And relies on an external stylesheet like the following:
       text-indent: -9999px;
     }
 
-## Dependencies
-
-Jitterbug uses `Imagemagick` to build the header images. It needs to be installed on your development and production machines, as do any fonts that you're using. The default location for fonts is `/lib/fonts` in your project.
-
-Jitterbug's currently Rails-centric, with these Rails dependencies: `RAILS_ROOT`, `content_tag`, `image_tag`. These aren't completely necessary, but we haven't had a need to remove them yet.
-
-## Compatibility and Font Types
-
-Jitterbug has been tested on OSX and Linux.
-
-The following font formats have successfully passed through the Jitterbug: OpenType (PostScript flavored), OpenType (TrueType flavored), PostScript (Type1), TrueType (Mac), and TrueType (PC). When processing Postscript fonts, Jitterbug (or rather Imagemagick) only uses the font outline file. Please rename any fonts with spaces in their filename.
-
-## Quick Links
-
- * [github.com/flyingsaucer/jitterbug](http://github.com/flyingsaucer/jitterbug)
- * [imagemagick.org](http://www.imagemagick.org/script/index.php)
-
 ## Global Configuration
 
-Define your global configuration in `config/jitterbug.yml`. The following sample contains Jitterbug's built in defaults. Note that the asterisk default for the font causes Jitterbug to use the first font that it finds in the font_dir folder.
+You can optionally define a global configuration in `config/jitterbug.yml`. The following sample contains Jitterbug's built in defaults. Note that the asterisk default for the font causes Jitterbug to use the first font that it finds in the font_dir folder.
 
     development:   &defaults
       background:  transparent
@@ -149,3 +134,15 @@ Define your global configuration in `config/jitterbug.yml`. The following sample
 
     production:
       <<:          *defaults
+      
+## Dependencies
+
+Jitterbug uses [Imagemagick](http://www.imagemagick.org/script/index.php) to build the header images. It needs to be installed on your development and production machines, as do any fonts that you're using. The default location for fonts is `/lib/fonts` in your project.
+
+We've only used Jitterbug in Rails projects thus far, so currently there are a few Rails dependencies: `RAILS_ROOT`, `content_tag` and `image_tag`. If anyone adapts Jitterbug for use in Sanatra, Merb or elsewhere, please send us your patches.
+
+## Compatibility and Font Types
+
+Jitterbug has been tested on OSX and Linux.
+
+The following font formats have successfully passed through the Jitterbug: OpenType (PostScript flavored), OpenType (TrueType flavored), PostScript (Type1), TrueType (Mac), and TrueType (PC). When processing Postscript fonts, Jitterbug (or rather Imagemagick) only uses the font outline file. Note that you should remove any spaces from your font filenames.
