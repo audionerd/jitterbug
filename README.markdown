@@ -139,7 +139,28 @@ You can optionally define a global configuration in `config/jitterbug.yml`. The 
 
 Jitterbug uses [Imagemagick](http://www.imagemagick.org/script/index.php) to build the header images. It needs to be installed on your development and production machines, as do any fonts that you're using. The default location for fonts is `/lib/fonts` in your project.
 
-We've only used Jitterbug in Rails projects thus far, so currently there are a few Rails dependencies: `RAILS_ROOT`, `content_tag` and `image_tag`. If anyone adapts Jitterbug for use in [Sinatra](http://github.com/sinatra/sinatra/), [Merb](http://github.com/merb/merb) or elsewhere, please send us your patches.
+## Using Jitterbug with Sinatra
+
+Jitterbug doesn't require Rails, provided you override the default root path and environment variables:
+
+    require 'sinatra'
+    
+    require 'jitterbug'
+    Jitterbug::root = File.dirname(__FILE__)
+    Jitterbug::environment = Sinatra::Application::environment.to_s    
+    
+    helpers do
+      include Jitterbug
+    end
+
+`Jitterbug::root` is the root path, which should include folders like `public/`, `lib/` and `config/`.  
+`Jitterbug::environment` is the a string representing the current environment (e.g.: `"development"` or `"production"`). 
+
+These default to `RAILS_ROOT` and `RAILS_ENV`, which require Rails.
+
+Jitterbug will provide its own `content_tag` and `image_tag` if ActionView isn't included.
+
+I've only tested this with Sinatra so far. Patches for Merb and other non-Rails systems would be very welcome.
 
 ## Compatibility and Font Types
 
