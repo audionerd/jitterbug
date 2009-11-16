@@ -6,8 +6,11 @@ module Jitterbug
                    :font       => '*',
                    :font_dir   => '/lib/fonts/',
                    :format     => 'png',
+                   :kerning    => 0,
                    :img_path   => '/content/jitterbug/',
                    :size       => 16 }
+
+    # TODO add :leading setting which requires >ImageMagick 6.5.5-8 to use -interline-spacing option
 
     def self.read
       config = "#{RAILS_ROOT}/config/jitterbug.yml"
