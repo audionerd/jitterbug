@@ -2,7 +2,7 @@ module Jitterbug
   module Fonts
     
     def self.find(_path, _font)
-      path = "#{Jitterbug::root}/#{_path}/*#{_font}*".gsub('//', '/')
+      path = "#{Jitterbug::Config.root}/#{_path}/*#{_font}*".gsub('//', '/')
       font = Dir.glob(path)
       case font.size
         when 0: raise "*** Jitterbug Error: Font '#{_font}' could not be found in #{_path}"

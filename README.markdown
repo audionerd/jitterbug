@@ -42,6 +42,10 @@ Install the gem:
 
     sudo gem install jitterbug
 
+Drop any fonts into your project's font directory (by default `/lib/fonts`).
+
+### Rails:
+
 In your `config/environment.rb` file:
 
     Rails::Initializer.run do |config|
@@ -58,8 +62,28 @@ In your `app\controllers\application_controller.rb` file:
       ...
     end
 
-Drop any fonts into your project's font directory (by default `/lib/fonts`).
+### Sinatra:
+
+Thanks to [audionerd](http://github.com/audionerd) for making Jitterbug work with Sinatra.
+
+    require 'sinatra'
+    require 'jitterbug'
     
+    Jitterbug::Config.root = File.dirname(__FILE__)
+    Jitterbug::Config.env  = Sinatra::Application::environment.to_s
+
+    helpers do
+      include Jitterbug
+    end
+    
+`Jitterbug::Config.root` is the root path, which should include folders like `public/`, `lib/` and `config/`.
+
+`Jitterbug::Config.env` is the a string representing the current environment (e.g.: `"development"` or `"production"`).
+
+### Merb, Ramaze, others...
+
+Anyone?
+
 ## Available Options
 
 `:background` Background color for the generated header image (default `transparent`)
@@ -77,6 +101,8 @@ Drop any fonts into your project's font directory (by default `/lib/fonts`).
 `:format` Format to output the generated header image (default `png`)
 
 `:img_path` Image path for generated header images (default `/content/jitterbug/`)
+
+`:kerning` Kerning value to apply to the generated header's text (default `0`)
 
 `:size` Font size for the generated header image (default `16`)
 
@@ -126,7 +152,7 @@ You can optionally define a global configuration in `config/jitterbug.yml`. The 
       font_dir:    /lib/fonts/
       format:      png
       img_path:    /content/jitterbug/
-      size:        16
+      size:        24
 
     test:
       <<:          *defaults
@@ -138,29 +164,6 @@ You can optionally define a global configuration in `config/jitterbug.yml`. The 
 ## Dependencies
 
 Jitterbug uses [Imagemagick](http://www.imagemagick.org/script/index.php) to build the header images. It needs to be installed on your development and production machines, as do any fonts that you're using. The default location for fonts is `/lib/fonts` in your project.
-
-## Using Jitterbug with Sinatra
-
-Jitterbug doesn't require Rails, provided you override the default root path and environment variables:
-
-    require 'sinatra'
-    
-    require 'jitterbug'
-    Jitterbug::root = File.dirname(__FILE__)
-    Jitterbug::environment = Sinatra::Application::environment.to_s    
-    
-    helpers do
-      include Jitterbug
-    end
-
-`Jitterbug::root` is the root path, which should include folders like `public/`, `lib/` and `config/`.  
-`Jitterbug::environment` is the a string representing the current environment (e.g.: `"development"` or `"production"`). 
-
-These default to `RAILS_ROOT` and `RAILS_ENV`, which require Rails.
-
-Jitterbug will provide its own `content_tag` and `image_tag` if ActionView isn't included.
-
-I've only tested this with Sinatra so far. Patches for Merb and other non-Rails systems would be very welcome.
 
 ## Compatibility and Font Types
 
