@@ -19,6 +19,7 @@ module Jitterbug
       `mkdir -p #{"#{root}/public/#{options[:img_path]}".gsub('//', '/')}`
       `convert -background #{options[:background]} -fill "#{options[:color]}" \
         -font #{Jitterbug::Fonts.find(options[:font_dir], options[:font])} \
+        -kerning #{options[:kerning]} \
         -pointsize #{options[:size]} -blur 0x.3 #{caption} #{path}`
     end
     img_src   = "/#{options[:img_path]}/#{hash}.#{options[:format]}".gsub('//', '/')
