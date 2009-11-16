@@ -82,7 +82,7 @@ Thanks to [audionerd](http://github.com/audionerd) for making Jitterbug work wit
 
 ### Merb, Ramaze, others...
 
-Anyone?
+Any takers?
 
 ## Available Options
 
