@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Chris Sessions", "Seth Engelhard"]
-  s.date = %q{2009-11-16}
+  s.date = %q{2009-11-17}
   s.description = %q{Jitterbug provides on-demand text header images using the font of your choice. On its first request, Jitterbug creates the requested header graphic. Then, and on subsequent requests, it returns an html image tag pointing to the header graphic file.}
   s.email = %q{contact@flying-saucer.net}
   s.extra_rdoc_files = [
@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
      "lib/jitterbug/config.rb",
      "lib/jitterbug/css.rb",
      "lib/jitterbug/fonts.rb",
+     "lib/jitterbug/html.rb",
      "spec/jitterbug_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb"

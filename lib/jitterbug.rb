@@ -1,5 +1,5 @@
 require 'md5'
-%w(config css fonts html).each |conf|
+%w(config css fonts html).each do |conf|
   require File.expand_path(File.join(File.dirname(__FILE__), 'jitterbug', conf))
 end
 
