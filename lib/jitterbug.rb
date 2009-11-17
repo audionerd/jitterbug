@@ -1,7 +1,7 @@
-require File.expand_path(File.join(File.dirname(__FILE__), 'jitterbug', 'config'))
-require File.expand_path(File.join(File.dirname(__FILE__), 'jitterbug', 'css'))
-require File.expand_path(File.join(File.dirname(__FILE__), 'jitterbug', 'fonts'))
 require 'md5'
+%w(config css fonts html).each |conf|
+  require File.expand_path(File.join(File.dirname(__FILE__), 'jitterbug', conf))
+end
 
 module Jitterbug
   
@@ -26,24 +26,11 @@ module Jitterbug
     img_class = (['jitterbug'] << options[:class]).compact.join(' ')
         
     if options[:tag]
-      content_tag(options[:tag], label, :class => img_class, :style => Jitterbug::Css.tag(img_src, options))
+      Jitterbug::Html.tag(options[:tag], label, :class => img_class, :style => Jitterbug::Css.tag(img_src, options))
     elsif options[:fat]
-      content_tag(options[:fat], label, :class => img_class, :style => Jitterbug::Css.fat(img_src, options))
+      Jitterbug::Html.tag(options[:fat], label, :class => img_class, :style => Jitterbug::Css.fat(img_src, options))
     else
-      image_tag(img_src, :alt => label, :class => img_class, :style => options[:style])
-    end
-  end
-
-  unless(respond_to?('content_tag'))
-    def content_tag(tag, label, options)
-      "<#{tag} class=\"#{options[:class]}\" style=\"#{options[:style]}\">#{label}</#{tag}>"
-    end
-  end
-  unless(respond_to?('image_tag'))
-    def image_tag(img_src, options)
-      "<img src=\"#{img_src}\" alt=\"#{options[:alt]}\" title=\"#{options[:alt]}\" " +
-      (options[:style] ? "style=\"#{options[:style]}\" " : '') +
-      "class=\"#{options[:class]}\" />"
+      Jitterbug::Html.img(img_src, :alt => label, :class => img_class, :style => options[:style])
     end
   end
 
