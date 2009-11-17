@@ -16,11 +16,11 @@ module Jitterbug
     path = "#{root}/public/#{options[:img_path]}/#{hash}.#{options[:format]}".gsub('//', '/')
     unless File.exist?(path)
       caption = options[:width] ? "-size #{options[:width]}x caption:'#{label}'" : "label:'#{label}'"
-      `mkdir -p #{"#{root}/public/#{options[:img_path]}".gsub('//', '/')}`
+      FileUtils.mkdir_p("#{root}/public/#{options[:img_path]}".gsub('//', '/'))
       `convert -background #{options[:background]} -fill "#{options[:color]}" \
         -font #{Jitterbug::Fonts.find(options[:font_dir], options[:font])} \
-        -kerning #{options[:kerning]} -pointsize #{options[:size]} -blur 0x.3 \
-        #{caption} #{path}`
+        -pointsize #{options[:size]} -blur 0x.3 #{caption} #{path}`
+      # -kerning #{options[:kerning]} TODO add leading and kerning
     end
     img_src   = "/#{options[:img_path]}/#{hash}.#{options[:format]}".gsub('//', '/')
     img_class = (['jitterbug'] << options[:class]).compact.join(' ')
