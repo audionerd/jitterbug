@@ -8,11 +8,15 @@ module Jitterbug
                    :format     => 'png',
                    :kerning    => 0,
                    :img_path   => '/content/jitterbug/',
-                   :size       => 24 }
+                   :size       => 24,
+                   :remember   => :memory,
+                   :root       => RAILS_ROOT,
+                   :env        => RAILS_ENV }
 
-    def self.read      
-      # TODO add :leading setting which requires >ImageMagick 6.5.5-8 to use -interline-spacing option
-      config = "#{Jitterbug::Config.root}/config/jitterbug.yml"
+                   # TODO add :leading setting which requires >ImageMagick 6.5.5-8 to use -interline-spacing option
+
+    def self.read
+      config = File.join(@@settings[:root], 'config', 'jitterbug.yml')
       if File.exist?(config)
         YAML.load_file(config)[Jitterbug::Config.env].each {|key, value| @@settings[key.to_sym] = value}
       end
@@ -22,21 +26,12 @@ module Jitterbug
       @@settings
     end
     
-    # accessor methods, with defaults for Rails
-    def self.root
-      @@root ||= RAILS_ROOT
+    def self.root=(val)
+      @@settings[:root] = val
     end
     
-    def self.root=(value)
-      @@root = value
-    end
-    
-    def self.env
-      @@environment ||= RAILS_ENV
-    end
-    
-    def self.env=(value)
-      @@environment = value
+    def self.env=(val)
+      @@settings[:env] = val
     end
 
   end
