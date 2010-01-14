@@ -50,7 +50,7 @@ In your `config/environment.rb` file:
 
     Rails::Initializer.run do |config|
       ...
-      config.gem "jitterbug", :source  => 'http://gemcutter.org/'
+      config.gem "jitterbug"
       ...
     end
 
@@ -79,10 +79,6 @@ Thanks to [audionerd](http://github.com/audionerd) for making Jitterbug work wit
 `Jitterbug::Config.root` is the root path, which should include folders like `public/`, `lib/` and `config/`.
 
 `Jitterbug::Config.env` is the a string representing the current environment (e.g.: `"development"` or `"production"`).
-
-### Merb, Ramaze, others...
-
-Any takers?
 
 ## Available Options
 

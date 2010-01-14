@@ -9,7 +9,6 @@ module Jitterbug
                    :kerning    => 0,
                    :img_path   => '/content/jitterbug/',
                    :size       => 24,
-                   :remember   => :memory,
                    :root       => RAILS_ROOT,
                    :env        => RAILS_ENV }
 

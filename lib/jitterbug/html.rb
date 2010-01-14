@@ -1,7 +1,7 @@
 module Jitterbug
   module Html
 
-    def render(src, label, opts = {})
+    def self.render(img_src, label, opts = {})
       img_class = (['jitterbug'] << opts[:class]).compact.join(' ')
       if opts[:tag]
         tag(opts[:tag], label, :class => img_class, :style => skinny_styles(img_src, opts))
