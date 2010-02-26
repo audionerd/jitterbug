@@ -96,8 +96,6 @@ In your `app\controllers\application_controller.rb` file:
 
 `:img_path` Image path for generated header images (default `/content/jitterbug/`)
 
-`:kerning` Kerning value to apply to the generated header's text (default `0`)
-
 `:size` Font size for the generated header image (default `16`)
 
 `:style` Any additional inline styles to include in the generated tag
@@ -167,15 +165,15 @@ Jitterbug has been tested on OSX and Linux.
 
 The following font formats have successfully passed through the Jitterbug: OpenType (PostScript flavored), OpenType (TrueType flavored), PostScript (Type1), TrueType (Mac), and TrueType (PC). When processing Postscript fonts, Jitterbug (or rather Imagemagick) only uses the font outline file. Note that you should remove any spaces from your font filenames.
 
-If you're using older Mac PostScript fonts you'll need to copy the font definitions from the resource fork to the data fork (look [here](http://wiki.github.com/sorccu/cufon/trouble-with-font-files) for more information). In OSX you'd do this:
+If you're using older Mac PostScript fonts you'll need to copy the font definitions from the resource fork to the data fork (see [here](http://wiki.github.com/sorccu/cufon/trouble-with-font-files) for more information). In OSX you'd do this:
 
     cat "FontName/..namedfork/rsrc" > "FontName.dfont"
 
 ## Contributors
 
-Jitterbug is written and maintained by [Flying Saucer](http://flying-saucer.net/)
-
 Many thanks to the following contributors:
 
 * Sinatra compatibility by [audionerd](http://github.com/audionerd)
 * Apostrophe fix by [Neal White](http://www.cohesivecc.com/)
+
+Jitterbug is written and maintained by [Flying Saucer](http://flying-saucer.net/)
