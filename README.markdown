@@ -135,7 +135,9 @@ And relies on an external stylesheet like the following:
 
 ## Global Configuration
 
-You can optionally define a global configuration in `config/jitterbug.yml`. The following sample contains Jitterbug's built in defaults. Note that the asterisk default for the font causes Jitterbug to use the first font that it finds in the font_dir folder. 
+You can optionally define a global configuration in `config/jitterbug.yml`. The following sample mirrors Jitterbug's built in defaults. Note that the asterisk default for the font causes Jitterbug to use the first font that it finds in the font_dir folder.
+
+Jitterbug 0.6.0 uses a new configuration format, breaking compatibility with older versions. The initial root-level block defines the default values. You can include tag-specific cascading definitions. In the config below, `H1` tags are 24pt black text, `H2` tags are 16pt black text in the DinMedium font, and `H2` tags with class `small` specified are 8pt red text in the DinMedium font.
 
     # Defaults
     background: transparent
@@ -148,7 +150,7 @@ You can optionally define a global configuration in `config/jitterbug.yml`. The 
 
     # Tag-Specific
     h2:
-      font:     'DinMedium'
+      font:     DinMedium
       size:     16
                 
     h2.small:
