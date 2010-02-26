@@ -40,11 +40,11 @@ Pass the `jitterbug` helper a string to convert into a header graphic. Optionall
 
 Install the gem:
 
-    sudo gem install jitterbug
+    gem install jitterbug
 
 Drop any fonts into your project's font directory (by default `/lib/fonts`).
 
-### Rails:
+### Rails 2:
 
 In your `config/environment.rb` file:
 
@@ -63,8 +63,6 @@ In your `app\controllers\application_controller.rb` file:
     end
 
 ### Sinatra:
-
-Thanks to [audionerd](http://github.com/audionerd) for making Jitterbug work with Sinatra.
 
     require 'sinatra'
     require 'jitterbug'
@@ -139,23 +137,25 @@ And relies on an external stylesheet like the following:
 
 ## Global Configuration
 
-You can optionally define a global configuration in `config/jitterbug.yml`. The following sample contains Jitterbug's built in defaults. Note that the asterisk default for the font causes Jitterbug to use the first font that it finds in the font_dir folder.
+You can optionally define a global configuration in `config/jitterbug.yml`. The following sample contains Jitterbug's built in defaults. Note that the asterisk default for the font causes Jitterbug to use the first font that it finds in the font_dir folder. 
 
-    development:   &defaults
-      background:  transparent
-      color:       black
-      font:        *
-      font_dir:    /lib/fonts/
-      format:      png
-      img_path:    /content/jitterbug/
-      size:        24
+    # Defaults
+    background: transparent
+    color:      '#000000'
+    font:       *
+    font_dir:   /lib/fonts/
+    format:     png
+    img_path:   /content/jitterbug/
+    size:       24
 
-    test:
-      <<:          *defaults
-      img_path:    /tmp/jitterbug/
-
-    production:
-      <<:          *defaults
+    # Tag-Specific
+    h2:
+      font:     'DinMedium'
+      size:     16
+                
+    h2.small:
+      color:    red
+      size:     8
       
 ## Dependencies
 
@@ -166,3 +166,16 @@ Jitterbug uses [Imagemagick](http://www.imagemagick.org/script/index.php) to bui
 Jitterbug has been tested on OSX and Linux.
 
 The following font formats have successfully passed through the Jitterbug: OpenType (PostScript flavored), OpenType (TrueType flavored), PostScript (Type1), TrueType (Mac), and TrueType (PC). When processing Postscript fonts, Jitterbug (or rather Imagemagick) only uses the font outline file. Note that you should remove any spaces from your font filenames.
+
+If you're using older Mac PostScript fonts you'll need to copy the font definitions from the resource fork to the data fork (look [here](http://wiki.github.com/sorccu/cufon/trouble-with-font-files) for more information). In OSX you'd do this:
+
+    cat "FontName/..namedfork/rsrc" > "FontName.dfont"
+
+## Contributors
+
+Jitterbug is written and maintained by [Flying Saucer](http://flying-saucer.net/)
+
+Many thanks to the following contributors:
+
+* Sinatra compatibility by [audionerd](http://github.com/audionerd)
+* Apostrophe fix by [Neal White](http://www.cohesivecc.com/)
